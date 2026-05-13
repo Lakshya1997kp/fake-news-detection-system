@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Empirical Lens – Forensic Information Integrity</title>
+  <link rel="stylesheet" href="/frontend/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- ───────────── NAVBAR ───────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <i class="fa-solid fa-shield-halved"></i>
+      <div>
+        <span>The Empirical Lens</span>
+        <span class="brand-sub hidden" id="brandSub">Welcome — truth starts here.</span>
+      </div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" class="nav-item active" data-page="analyze">Analyze</a></li>
+      <li><a href="#" class="nav-item" data-page="history">History</a></li>
+      <li><a href="#" class="nav-item" data-page="profile">Profile</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#" class="nav-item" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+      <div class="nav-auth" id="navAuth">
+        <a href="#" class="btn btn-outline" data-page="login">Login</a>
+        <a href="#" class="btn btn-primary" data-page="signup">Sign Up</a>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+  </nav>
+
+  <!-- ───────────── PAGES ───────────── -->
+  <main id="app">
+
+    <!-- LOGIN PAGE -->
+    <section class="page" id="page-login">
+      <div class="auth-card">
+        <div class="auth-header">
+          <i class="fa-solid fa-shield-halved brand-icon"></i>
+          <h2>Welcome back</h2>
+          <p>Sign in to your Empirical Lens account</p>
+        </div>
+        <form id="loginForm">
+          <div class="form-group">
+            <label>Email</label>
+            <div class="input-icon">
+              <i class="fa-solid fa-envelope"></i>
+              <input type="email" id="loginEmail" placeholder="you@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <div class="input-icon">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="loginPassword" placeholder="••••••••" required />
+              <button type="button" class="toggle-pw" data-target="loginPassword"><i class="fa-solid fa-eye"></i></button>
+            </div>
+          </div>
+          <div id="loginError" class="alert alert-error hidden"></div>
+          <button type="submit" class="btn btn-primary btn-full" id="loginBtn">
+            <span class="btn-text">Sign In</span>
+            <span class="spinner hidden"></span>
+          </button>
+        </form>
+        <p class="auth-switch">Don't have an account? <a href="#" data-page="signup">Sign up</a></p>
+      </div>
+    </section>
+
+    <!-- SIGNUP PAGE -->
+    <section class="page hidden" id="page-signup">
+      <div class="auth-card">
+        <div class="auth-header">
+          <i class="fa-solid fa-shield-halved brand-icon"></i>
+          <h2>Create account</h2>
+          <p>Join The Empirical Lens and start detecting fake news</p>
+        </div>
+        <form id="signupForm">
+          <div class="form-group">
+            <label>Full Name</label>
+            <div class="input-icon">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" id="signupName" placeholder="John Doe" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <div class="input-icon">
+              <i class="fa-solid fa-envelope"></i>
+              <input type="email" id="signupEmail" placeholder="you@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <div class="input-icon">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="signupPassword" placeholder="Min 6 characters" required />
+              <button type="button" class="toggle-pw" data-target="signupPassword"><i class="fa-solid fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <div class="input-icon">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="signupConfirm" placeholder="Repeat password" required />
+              <button type="button" class="toggle-pw" data-target="signupConfirm"><i class="fa-solid fa-eye"></i></button>
+            </div>
+          </div>
+          <div id="signupError" class="alert alert-error hidden"></div>
+          <div id="signupSuccess" class="alert alert-success hidden"></div>
+          <button type="submit" class="btn btn-primary btn-full" id="signupBtn">
+            <span class="btn-text">Create Account</span>
+            <span class="spinner hidden"></span>
+          </button>
+        </form>
+        <p class="auth-switch">Already have an account? <a href="#" data-page="login">Sign in</a></p>
+      </div>
+    </section>
+
+    <!-- ANALYZE PAGE -->
+    <section class="page hidden" id="page-analyze">
+
+      <!-- Hero -->
+      <div class="analyze-hero">
+        <h1 class="analyze-hero-title">Forensic Information <span>Integrity</span></h1>
+        <p class="analyze-hero-sub">Our empirical engine analyzes linguistic patterns and cross-references source credibility via BERT and live fact-checking to deliver a verified verdict.</p>
+      </div>
+
+      <!-- Input Window -->
+      <div class="analyze-wrapper">
+        <div class="empirical-card">
+          <div class="empirical-card-header">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>EMPIRICAL INPUT WINDOW</span>
+          </div>
+          <textarea id="analyzeText" rows="7" placeholder="Paste the article text here for deep scanning..."></textarea>
+          <div class="empirical-card-footer">
+            <div class="feature-tags">
+              <span class="feature-tag"><i class="fa-solid fa-file-lines"></i> Full Text</span>
+              <span class="feature-tag"><i class="fa-solid fa-robot"></i> BERT Analysis</span>
+              <span class="feature-tag"><i class="fa-solid fa-globe"></i> Fact-Check Cross-Reference</span>
+            </div>
+            <div class="char-count-wrap">
+              <span class="char-count" id="charCount">0 / 10,000</span>
+            </div>
+          </div>
+          <div id="analyzeError" class="alert alert-error hidden"></div>
+          <div class="empirical-card-action">
+            <button class="btn btn-analyze" id="analyzeBtn">
+              <span class="btn-text">Begin Analysis</span>
+              <i class="fa-solid fa-bolt btn-text"></i>
+              <span class="spinner hidden"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- RESULT CARD -->
+        <div class="result-card hidden" id="resultCard">
+          <div class="result-header" id="resultHeader">
+            <div class="result-icon" id="resultIcon"></div>
+            <div>
+              <h2 id="resultLabel"></h2>
+              <p id="resultConfidence"></p>
+            </div>
+          </div>
+          <div class="breakdown-grid">
+
+            <!-- ML Model -->
+            <div class="breakdown-item">
+              <div class="breakdown-label">
+                <i class="fa-solid fa-microchip"></i> ML Classifier
+                <span class="weight-badge">35%</span>
+              </div>
+              <div class="breakdown-value" id="mlLabel"></div>
+              <div class="progress-bar"><div class="progress-fill" id="mlBar"></div></div>
+              <div class="breakdown-score" id="mlScore"></div>
+            </div>
+
+            <!-- Wikipedia -->
+            <div class="breakdown-item">
+              <div class="breakdown-label">
+                <i class="fa-brands fa-wikipedia-w"></i> Wikipedia
+                <span class="weight-badge">30%</span>
+              </div>
+              <div class="breakdown-value" id="wikiCredible"></div>
+              <div class="progress-bar"><div class="progress-fill" id="wikiBar"></div></div>
+              <div class="breakdown-score" id="wikiMatched"></div>
+              <div class="breakdown-score" id="wikiSummary" style="margin-top:.35rem;font-style:italic;"></div>
+            </div>
+
+            <!-- Knowledge Base -->
+            <div class="breakdown-item">
+              <div class="breakdown-label">
+                <i class="fa-solid fa-book"></i> Knowledge Base
+                <span class="weight-badge">10%</span>
+              </div>
+              <div class="breakdown-value" id="kbMatch"></div>
+              <div class="breakdown-score" id="kbClaimed"></div>
+              <div class="breakdown-score" id="kbActual"></div>
+            </div>
+
+            <!-- Fact Check -->
+            <div class="breakdown-item">
+              <div class="breakdown-label">
+                <i class="fa-solid fa-database"></i> Fact-Check Signal
+                <span class="weight-badge">25%</span>
+              </div>
+              <div class="breakdown-value" id="factLabel"></div>
+              <div class="breakdown-score" id="factSource"></div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- HISTORY PAGE -->
+    <section class="page hidden" id="page-history">
+      <div class="history-hero">
+        <div class="history-hero-inner">
+          <i class="fa-solid fa-clock-rotate-left history-hero-icon"></i>
+          <div>
+            <h1>Welcome to your Analysis History</h1>
+            <p>Every article you've scanned, ranked and timestamped. Track patterns, revisit verdicts, and stay informed.</p>
+          </div>
+        </div>
+      </div>
+      <div class="page-container">
+        <div class="history-controls">
+          <div class="history-filter">
+            <label>Show</label>
+            <select id="historyLimit">
+              <option value="5" selected>5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
+            <label>per page</label>
+          </div>
+          <button class="btn btn-outline" id="refreshHistory"><i class="fa-solid fa-rotate-right"></i> Refresh</button>
+        </div>
+        <div id="historyError" class="alert alert-error hidden"></div>
+        <div id="historyLoading" class="loading-state hidden">
+          <div class="spinner-lg"></div><p>Loading history...</p>
+        </div>
+        <div id="historyEmpty" class="empty-state hidden">
+          <i class="fa-solid fa-inbox"></i>
+          <p>No analysis history yet. Go analyze something!</p>
+          <a href="#" class="btn btn-primary" data-page="analyze">Analyze Now</a>
+        </div>
+        <div id="historyList" class="history-list"></div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </section>
+
+    <!-- PROFILE PAGE -->
+    <section class="page hidden" id="page-profile">
+      <div class="page-container profile-container">
+        <div class="page-header">
+          <h1><i class="fa-solid fa-user-circle"></i> Profile</h1>
+          <p>Manage your account settings</p>
+        </div>
+
+        <!-- Profile Info Card -->
+        <div class="profile-card">
+          <div class="profile-avatar" id="profileAvatar"></div>
+          <div class="profile-info">
+            <h2 id="profileName">—</h2>
+            <p id="profileEmail">—</p>
+          </div>
+        </div>
+
+        <!-- Change Name -->
+        <div class="settings-card">
+          <h3><i class="fa-solid fa-pen"></i> Change Name</h3>
+          <form id="changeNameForm">
+            <div class="form-group">
+              <label>New Name</label>
+              <input type="text" id="newName" placeholder="Enter new name" required />
+            </div>
+            <div id="nameMsg" class="alert hidden"></div>
+            <button type="submit" class="btn btn-primary" id="changeNameBtn">
+              <span class="btn-text">Update Name</span>
+              <span class="spinner hidden"></span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Change Email -->
+        <div class="settings-card">
+          <h3><i class="fa-solid fa-envelope"></i> Change Email</h3>
+          <form id="changeEmailForm">
+            <div class="form-group">
+              <label>New Email</label>
+              <div class="input-icon">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" id="newEmail" placeholder="new@example.com" required />
+              </div>
+            </div>
+            <div id="emailMsg" class="alert hidden"></div>
+            <button type="submit" class="btn btn-primary" id="changeEmailBtn">
+              <span class="btn-text">Update Email</span>
+              <span class="spinner hidden"></span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Change Password -->
+        <div class="settings-card">
+          <h3><i class="fa-solid fa-key"></i> Change Password</h3>
+          <form id="changePasswordForm">
+            <div class="form-group">
+              <label>Current Password</label>
+              <div class="input-icon">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="oldPassword" placeholder="Current password" required />
+                <button type="button" class="toggle-pw" data-target="oldPassword"><i class="fa-solid fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>New Password</label>
+              <div class="input-icon">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="newPassword" placeholder="New password" required />
+                <button type="button" class="toggle-pw" data-target="newPassword"><i class="fa-solid fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Confirm New Password</label>
+              <div class="input-icon">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="confirmNewPassword" placeholder="Repeat new password" required />
+                <button type="button" class="toggle-pw" data-target="confirmNewPassword"><i class="fa-solid fa-eye"></i></button>
+              </div>
+            </div>
+            <div id="passwordMsg" class="alert hidden"></div>
+            <button type="submit" class="btn btn-primary" id="changePasswordBtn">
+              <span class="btn-text">Update Password</span>
+              <span class="spinner hidden"></span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="settings-card danger-zone">
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> Danger Zone</h3>
+          <p>Permanently delete your account and all associated data. This action cannot be undone.</p>
+          <div id="deleteMsg" class="alert hidden"></div>
+          <button class="btn btn-danger" id="deleteAccountBtn">
+            <i class="fa-solid fa-trash"></i> Delete Account
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="analyze-footer-inner">
+      <div class="footer-brand">
+        <strong>The Empirical Lens</strong>
+        <p>Dedicated to the restoration of truth in the digital age.</p>
+      </div>
+      <div class="footer-links">
+        <span>AI Ethics Statement</span>
+        <span>Privacy Policy</span>
+        <span>Terms of Service</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DELETE CONFIRM MODAL -->
+  <div class="modal-overlay hidden" id="deleteModal">
+    <div class="modal">
+      <div class="modal-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <h3>Delete Account?</h3>
+      <p>This will permanently remove your account and all history. Are you sure?</p>
+      <div class="modal-actions">
+        <button class="btn btn-outline" id="cancelDelete">Cancel</button>
+        <button class="btn btn-danger" id="confirmDelete">
+          <span class="btn-text">Yes, Delete</span>
+          <span class="spinner hidden"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="/frontend/app.js"></script>
+</body>
+</html>

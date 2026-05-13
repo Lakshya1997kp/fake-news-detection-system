@@ -1,0 +1,27 @@
+# Environment & secrets
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Old transformer model (replaced by sklearn pkl)
+fake_news_distilroberta/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Migrations cache
+migrations/__pycache__/
+migrations/versions/__pycache__/
