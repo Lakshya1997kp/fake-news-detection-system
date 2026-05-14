@@ -10,6 +10,5 @@ numpy==1.26.4
 pandas==2.2.2
 protobuf==4.25.3
 google-api-python-client==2.131.0
-tensorflow==2.15.0
 joblib==1.5.3
 scikit-learn==1.4.2
