@@ -148,7 +148,7 @@ document.getElementById('loginForm').addEventListener('submit', async e => {
     });
     const data = await res.json();
     if (data.token) {
-      setToken(data.token);
+    setToken(data.token);
       updateNav();
       showToast('Welcome back!', 'success');
       navigate('analyze');
@@ -425,7 +425,7 @@ function buildHistoryItem(r) {
   }
 
   const conf = r.confidence != null ? `${(r.confidence * 100).toFixed(1)}% confidence` : '';
-  const date = r.created_at ? new Date(r.created_at).toLocaleString() : '';
+  const date = (r.Time || r.created_at) ? new Date(r.Time || r.created_at).toLocaleString() : '';
   const text = r.text_preview || r.text || r.input_text || '(no text stored)';
 
   const div = document.createElement('div');
